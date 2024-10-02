@@ -1,0 +1,60 @@
+<%- include('./partials/header.ejs') %>
+    <div class="container">
+        <div class="row bg-[whitesmoke] pt-3">
+            <div class="col-sm-6">
+                <h2 class="alert alert-success text-center" role="alert">Add BreakFast</h2>
+
+                <!-- form -->
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-bolder">BreakFast Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="CheckOut from our culinary section">
+                    </div>
+                    <div class="mb-3">
+                        <label for="calorie" class="form-label fw-bolder">Enter Calorie </label>
+                        <input type="number" class="form-control" id="calorie" name="calorie">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <h2 class="alert alert-info text-center">Tracker</h2>
+                <div  style="height: 70%; overflow: auto;">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="text-center fixed">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">BreakFast</th>
+                            <th scope="col">Calorie</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center overflow-auto">
+                        <% i = 1 %>
+                        <% data.forEach((item) => { %> 
+                          
+                            <% const d = new Date() %>
+                        <tr>
+                            <td><%=i%></td>
+                            <td><%=item.breakfastname%></td>
+                            <td><%=item.calorie%></td>
+                            <td><%=d.getDate() +'/'+ d.getMonth() + '/' + d.getFullYear()%></td>
+                            <td>
+                                <form action='./edit/<%=item._id%>' method="get" class="d-inline">
+                                  <button class="bg-transparent border-0" type="submit"><i class="fa-solid fa-pen" style="padding-right: 19px; cursor: pointer;"></i></button> 
+                                </form>
+                                <form action='./delete/<%=item._id%>' method="post" class="d-inline">
+                                  <button class="bg-transparent border-0" type="submit"><i class="fas fa-trash text-danger" style="cursor: pointer;"></i></button> 
+                                </form>
+                            </td>
+                        </tr>
+                        <% i = i + 1 %>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>

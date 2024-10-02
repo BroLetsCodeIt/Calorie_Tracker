@@ -1,0 +1,25 @@
+<%- include('./partials/header.ejs') %>
+    <div class="container">
+        <div class="row bg-[whitesmoke] pt-3">
+            <div class="col-sm-6">
+                <h2 class="alert alert-success text-center" role="alert">Update BreakFast</h2>
+
+                <!-- form -->
+                <form action="/update/<%=data._id%>" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-bolder">BreakFast Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="CheckOut from our culinary section" value="<%=data.breakfastname %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="calorie" class="form-label fw-bolder">Enter Calorie </label>
+                        <input type="number" class="form-control" id="calorie" name="calorie" value="<%=data.calorie%>">
+                    </div>
+                    <button type="submit" class="btn btn-warning ">Update</button>
+                    <button type="submit" class="btn btn-secondary">Back to Home</button>
+                </form>
+            </div>
+            
+          
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>
